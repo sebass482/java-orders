@@ -28,4 +28,11 @@ public class AgentServiceImpl implements AgentService{
                 .orElseThrow(()-> new EntityNotFoundException("Agent" + agentcode + " Not Found"));
         return rtnAgent;
     }
+
+
+    @Transactional
+    @Override
+    public void deleteAllAgents() {
+        agentrepository.deleteAll();
+    }
 }

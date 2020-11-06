@@ -30,7 +30,7 @@ public class Customer {
 //    private Agent agentcode;
 
     //FROM ORDER
-    @OneToMany(mappedBy = "custcode",
+    @OneToMany(mappedBy = "customer",
                 cascade = CascadeType.ALL,
                 orphanRemoval = true)
     @JsonIgnoreProperties(value = "customer", allowSetters = true)
@@ -39,12 +39,11 @@ public class Customer {
     @ManyToOne
     @JoinColumn(name = "agentcode", nullable = false)
     @JsonIgnoreProperties(value = "customers", allowSetters = true)
-    private Agent agentcode;
+    private Agent agent;
 
     public Customer() {
     }
-    public Customer(long custcode,
-                    String custname,
+    public Customer(String custname,
                     String custcity,
                     String workingarea,
                     String custcountry,
@@ -54,8 +53,8 @@ public class Customer {
                     double paymentamt,
                     double outstandingamt,
                     String phone,
-                    Agent agentcode) {
-        this.custcode = custcode;
+                    Agent agent) {
+
         this.custname = custname;
         this.custcity = custcity;
         this.workingarea = workingarea;
@@ -66,7 +65,7 @@ public class Customer {
         this.paymentamt = paymentamt;
         this.outstandingamt = outstandingamt;
         this.phone = phone;
-        this.agentcode = agentcode;
+        this.agent = agent;
     }
 
     public long getCustcode() {
@@ -149,12 +148,12 @@ public class Customer {
         this.phone = phone;
     }
 
-    public Agent getAgentcode() {
-        return agentcode;
+    public Agent getAgent() {
+        return agent;
     }
 
-    public void setAgentcode(Agent agentcode) {
-        this.agentcode = agentcode;
+    public void setAgent(Agent agentcode) {
+        this.agent = agentcode;
     }
 
     public String getWorkingarea() {
